@@ -126,7 +126,7 @@ public class WeatherAppGui extends JFrame {
                         weatherConditionImage.setIcon(loadImage("src/assets/rain.png"));
                         break;
                     case "Snow":
-                        weatherConditionImage.setIcon(loadImage("src/assets/snow.pngImage"));
+                        weatherConditionImage.setIcon(loadImage("src/assets/snow.png"));
                         break;
                 }
 

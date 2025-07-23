@@ -18,6 +18,9 @@ public class WeatherApp {
     public static JSONObject getWeatherData(String locationName){
         // get location coordinates using the geolocation API
         JSONArray locationData = getLocationData(locationName);
+        if (locationData == null || locationData.isEmpty()) {
+            return null;
+        }
 
         // extract latitude and longitude data
         JSONObject location = (JSONObject) locationData.get(0);
@@ -32,10 +35,7 @@ public class WeatherApp {
         try{
             // call api and get response
             HttpURLConnection conn = fetchApiResponse(urlString);
-
-            // check for response status
-            // 200 - means that the connection was a success
-            if(conn.getResponseCode() != 200){
+            if (conn == null || conn.getResponseCode() != 200){
                 System.out.println("Error: Could not connect to API");
                 return null;
             }
@@ -112,7 +112,7 @@ public class WeatherApp {
 
             // check response status
             // 200 means successful connection
-            if(conn.getResponseCode() != 200){
+            if(conn == null || conn.getResponseCode() != 200){
                 System.out.println("Error: Could not connect to API");
                 return null;
             }else{
